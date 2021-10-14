@@ -20,9 +20,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - run: |
-        ssh -i ${{ inputs.private-key-file }} ${{ inputs.user }}@${{ inputs.host }} 'bash -s' <<'ENDSSH'
-          # commands to run on remote host
-          ${{ inputs.run }}
-        ENDSSH
+    - name: Run script
+      - run: |
+          ssh -i ${{ inputs.private-key-file }} ${{ inputs.user }}@${{ inputs.host }} 'bash -s' <<'ENDSSH'
+            # commands to run on remote host
+            ${{ inputs.run }}
+          ENDSSH
       shell: bash
