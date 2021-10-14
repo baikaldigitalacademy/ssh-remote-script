@@ -1,0 +1,28 @@
+name: 'SSH remote run'
+description: 'Run shell scripts on remote host'
+branding:
+  icon: 'terminal'
+  color: 'gray-dark'
+
+inputs:
+  user:
+    description: 'Remote User'
+    required: true
+  host:
+    description: 'Remote host'
+    required: true
+  private-key-file:
+    description: 'SSH private key'
+    required: true
+  run:
+    description: 'Script to run'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    run: |
+        ssh -i ${{ inputs.private-key-file }} ${{ inputs.user }}@${{ inputs.host }} 'bash -s' <<'ENDSSH'
+          # commands to run on remote host
+          ${{ inputs.run }}
+        ENDSSH
+    shell: bash
