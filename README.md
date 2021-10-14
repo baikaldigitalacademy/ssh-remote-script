@@ -2,7 +2,7 @@
 Action that runs script on ssh remote
 
 ## Usage
-
+```
 runs-on: ubuntu-latest
 steps:
   - name: Run script on remote
@@ -27,3 +27,4 @@ steps:
 
     # bash command to execute on remote
     - run: echo "Single running on remote" >> /tmp/ssh-remote-script.txt
+```
