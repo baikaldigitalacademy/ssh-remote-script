@@ -25,4 +25,4 @@ runs:
           # commands to run on remote host
           ${{ inputs.run }}
         ENDSSH
-    shell: bash
+      shell: bash
